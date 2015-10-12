@@ -1,0 +1,33 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <general>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:bwrk_ajaxcontent/Resources/Private/Language/locallang.xlf:bwrk_ajaxcontent.settings</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.pages>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:bwrk_ajaxcontent/Resources/Private/Language/locallang.xlf:bwrk_ajaxcontent.settings.pages
+                            </label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>10</size>
+                                <maxitems>99</maxitems>
+                                <minitems>0</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.pages>
+                </el>
+            </ROOT>
+        </general>
+    </sheets>
+</T3DataStructure>

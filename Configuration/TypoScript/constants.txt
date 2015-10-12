@@ -1,0 +1,19 @@
+plugin.tx_bwrkajaxcontent {
+   view {
+      templateRootPath = EXT:bwrk_ajaxcontent/Resources/Private/Templates/
+      layoutRootPath = EXT:bwrk_ajaxcontent/Resources/Private/Layouts/
+      partialRootPath = EXT:bwrk_ajaxcontent/Resources/Private/Partials/
+   }
+   settings {
+      plugin =
+      pages =
+
+      js {
+         main = EXT:bwrk_ajaxcontent/Resources/Public/Js/main.min.js
+         jQuery = EXT:bwrk_ajaxcontent/Resources/Public/Js/jquery-1.11.3.min.js
+      }
+      css {
+         main = EXT:bwrk_ajaxcontent/Resources/Public/Css/main.css
+      }
+   }
+}

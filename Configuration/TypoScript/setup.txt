@@ -1,0 +1,28 @@
+plugin.tx_bwrkajaxcontent {
+   view {
+      templateRootPaths {
+         100 = {$plugin.tx_bwrkajaxcontent.view.templateRootPath}
+      }
+      layoutRootPaths {
+         100 = {$plugin.tx_bwrkajaxcontent.view.layoutRootPath}
+      }
+      partialRootPaths {
+         100 = {$plugin.tx_bwrkajaxcontent.view.partialRootPath}
+      }
+   }
+   settings {
+      pages = {$plugin.tx_bwrkajaxcontent.settings.pages}
+      plugin = {$plugin.tx_bwrkajaxcontent.settings.plugin}
+   }
+}
+
+page = PAGE
+page.includeJSFooter.bwrk_ajaxcontent = {$plugin.tx_bwrkajaxcontent.settings.js.main}
+page.includeCSS.bwrk_ajaxcontent = {$plugin.tx_bwrkajaxcontent.settings.css.main}
+
+#####################
+### Include Jquery?
+#####################
+[userFunc = BERGWERK\BwrkAjaxcontent\UserFunc\Extconf::match(enableJQuery)]
+page.includeJSLibs.bwrk_ajaxcontent_jQuery = {$plugin.tx_bwrkajaxcontent.settings.js.jQuery}
+[global]

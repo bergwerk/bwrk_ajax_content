@@ -1,0 +1,10 @@
+{namespace bwrk=BERGWERK\BwrkAjaxcontent\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+    <f:flashMessages renderMode="div" />
+    <div class="tx-bwrk-ajaxcontent-menu" data-loader="#loader{settings.plugin}">
+        <f:render partial="Menu/Menu" arguments="{pages: pages}" />
+    </div>
+</f:section>
