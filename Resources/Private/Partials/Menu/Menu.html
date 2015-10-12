@@ -1,7 +1,7 @@
 <ul>
 <f:for each="{pages}" as="page">
     <li class="{f:if(condition: '{page.active}', then: 'active')}">
-        <f:link.page class="tx-bwrk-ajaxcontent-link" id="pid{page.page.uid}" pageUid="{page.page.uid}" data="{pageuid: '{page.page.uid}'}">{page.page.title}</f:link.page>
+        <f:link.page class="tx-bwrk-ajaxcontent-link" id="pid{page.page.uid}" pageUid="{page.page.uid}" additionalAttributes="{data-pageuid: '{page.page.uid}'}">{page.page.title}</f:link.page>
 
         <f:if condition="{page.sub}">
             <f:render partial="Menu/Menu" arguments="{pages: page.sub}" />

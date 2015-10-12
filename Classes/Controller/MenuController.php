@@ -102,7 +102,7 @@ class MenuController extends ActionController
         foreach($subPages as $pageUid)
         {
             /** @var Pages $page */
-            $page = $this->pageRepository->findByUid($pageUid);
+            $page = $this->pageRepository->findByUid($pageUid->getUid());
             if(is_null($page)) return '';
 
             $active = false;
