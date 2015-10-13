@@ -20,55 +20,41 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  *
- * @author	Georg Dümmler <gd@bergwerk.ag>
- * @package	TYPO3
- * @subpackage	bwrk_ajaxcontent
+ * @author    Georg Dümmler <gd@bergwerk.ag>
+ * @package    TYPO3
+ * @subpackage    bwrk_ajaxcontent
  ***************************************************************/
 
+$(document).ready(function () {
 
-.tx-bwrk-ajaxcontent {
-  .tx-bwrk-ajaxcontent-menu {
-    ul {
-      list-style-type:none;
-      margin:0;
-      padding:0 0 0 15px;
+    $('.tx-bwrk-ajaxcontent-link').click(function () {
+        var link = $(this);
+        var uid = link.attr('data-pageuid');
+        var container = $(this).parents('.tx-bwrk-ajaxcontent-menu');
+        var loaderId = container.attr('data-loader');
+        var loader = $('body').find(loaderId);
 
-      li {
-        border-top:1px solid #ddd;
+        loader.show();
 
-        &:before {
-          content: "\21B3";
-          color:#666;
-          position:absolute;
-          padding-top: 2px;
-        }
+        container.find('li').removeClass('active');
+        link.parent('li').addClass('active');
 
-        a {
-          margin-left:20px;
-        }
+        $.ajax({
+            method: "POST",
+            url: "index.php?eID=bwrkAjaxcontentLoad",
+            data: {
+                'tx_bwrkajaxcontent_pi3[uid]': uid
+            }
+        })
+            .done(function (content) {
+                loader.hide();
+                $('.tx-bwrk-ajaxcontent-content').html(content);
+            });
 
-        &.active {
-          > a {
-            font-weight: bold;
-          }
-        }
-      }
-    }
-  }
+        return false;
+    });
 
-  > .tx-bwrk-ajaxcontent-menu {
-    > ul {
-      padding-left:0;
-    }
-  }
+});
 
-  .tx-bwrk-ajaxcontent-loader {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    display:none;
-  }
-}
 
-@import "loader";
+
