@@ -1,11 +1,13 @@
 <ul class="side-nav">
 <f:for each="{pages}" as="page">
-    <li class="{f:if(condition: '{page.active}', then: 'active')}">
-        <f:link.page class="tx-bwrk-ajaxcontent-link" id="pid{page.page.uid}" pageUid="{page.page.uid}" additionalAttributes="{data-pageuid: '{page.page.uid}'}">{page.page.title}</f:link.page>
+    <li class="{f:if(condition: '{page.active}', then: 'active-link')} {f:if(condition: '{page.sub}', then: 'has-dropdown')}">
+        <f:link.page class="tx-bwrk-ajaxcontent-link {f:if(condition: '{page.sub}', then: 'dropdown-toggle')}" id="pid{page.page.uid}" pageUid="{page.page.uid}" additionalAttributes="{data-pageuid: '{page.page.uid}', data-toggle: '{f:if(condition: page.sub, then: \'dropdown\')}'}">{page.page.title}</f:link.page>
 
         <f:if condition="{page.sub}">
-            <f:render partial="Menu/Menu" arguments="{pages: page.sub}" />
+            <f:render partial="Menu/MenuRecursive" arguments="{pages: page.sub}" />
         </f:if>
     </li>
 </f:for>
 </ul>
+
+
