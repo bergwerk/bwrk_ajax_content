@@ -32,8 +32,8 @@ $(document).ready(function () {
         var link = $(this);
         var uid = link.attr('data-pageuid');
         var container = $(this).parents('.tx-bwrk-ajaxcontent-menu');
-        var loaderId = container.attr('data-loader');
-        var loader = $('body').find(loaderId);
+
+        var loader = $('body').find('.tx-bwrk-ajaxcontent-loader');
 
         loader.show();
 
@@ -54,9 +54,6 @@ $(document).ready(function () {
 
         return false;
     });
-
-
-
 });
 
 

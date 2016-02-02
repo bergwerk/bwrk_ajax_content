@@ -4,7 +4,14 @@
 
 <f:section name="main">
     <f:flashMessages renderMode="div" />
+
+
     <div class="tx-bwrk-ajaxcontent-menu" data-loader="#loader{settings.plugin}">
+
+        <div class="hide-for-large-up">
+            <a class="button dropdown" data-dropdown="dropdown-side-nav" aria-controls="drop1" aria-expanded="false">Produktkategorie auswählen</a>
+        </div>
+
         <f:render partial="Menu/Menu" arguments="{pages: pages}" />
     </div>
 </f:section>
