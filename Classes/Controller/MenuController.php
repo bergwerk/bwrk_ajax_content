@@ -5,6 +5,7 @@ namespace BERGWERK\BwrkAjaxcontent\Controller;
 use BERGWERK\BwrkAjaxcontent\Domain\Model\Content;
 use BERGWERK\BwrkAjaxcontent\Domain\Model\Pages;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Messaging\FlashMessageQueue;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extensionmanager\Controller\ActionController;
@@ -49,6 +50,8 @@ class MenuController extends ActionController
         {
             /** @var Content $contentElement */
             $contentElement = $this->contentRepository->findByUid($pluginUid);
+            if(is_null($contentElement)) $this->addMessage('No content found!');
+
             $contentElementFlexForm = $contentElement->getPiFlexform();
 
             if(empty($contentElementFlexForm)) $this->addMessage('No content plugin configured.');
@@ -147,6 +150,7 @@ class MenuController extends ActionController
 
         $this->isError = true;
 
-        \TYPO3\CMS\Core\Messaging\FlashMessageQueue::addMessage($message);
+        $messageQueue = new FlashMessageQueue($this->extensionName);
+        $messageQueue->addMessage($message);
     }
 }
