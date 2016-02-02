@@ -1,6 +1,6 @@
 <ul class="side-nav">
 <f:for each="{pages}" as="page">
-    <li class="{f:if(condition: '{page.active}', then: 'active-link')} {f:if(condition: '{page.sub}', then: 'has-dropdown')}">
+    <li class="{f:if(condition: '{page.active}', then: 'active')} {f:if(condition: '{page.sub}', then: 'has-dropdown')}">
         <f:link.page class="tx-bwrk-ajaxcontent-link {f:if(condition: '{page.sub}', then: 'dropdown-toggle')}" id="pid{page.page.uid}" pageUid="{page.page.uid}" additionalAttributes="{data-pageuid: '{page.page.uid}', data-toggle: '{f:if(condition: page.sub, then: \'dropdown\')}'}">{page.page.title}</f:link.page>
 
         <f:if condition="{page.sub}">
