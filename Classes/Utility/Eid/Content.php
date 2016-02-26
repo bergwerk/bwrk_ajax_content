@@ -3,6 +3,7 @@
 namespace BERGWERK\BwrkAjaxcontent\Utility\Eid;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Utility\EidUtility;
 
 class Content {
@@ -31,10 +32,9 @@ class Content {
         $GLOBALS['TSFE']->fe_user = \TYPO3\CMS\Frontend\Utility\EidUtility::initFeUser();
         $GLOBALS['TSFE']->id = $pId;
         $GLOBALS['TSFE']->determineId();
-//        $GLOBALS['TSFE']->getCompressedTCarray();
         $GLOBALS['TSFE']->initTemplate();
         $GLOBALS['TSFE']->getConfigArray();
-//        $GLOBALS['TSFE']->includeTCA();
+        $GLOBALS['TSFE']->cObj = new ContentObjectRenderer();
 
         echo $bootstrap->run('', $configuration);
     }
