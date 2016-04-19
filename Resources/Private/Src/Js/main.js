@@ -49,13 +49,13 @@ $(document).ready(function () {
 			})
 			.done(function (content) {
 
+				$('.tx-bwrk-ajaxcontent-content').html(content);
+
 				if (picturefill !== undefined) {
-					console.log('picturefill');
 					picturefill();
 				}
 
 				loader.hide();
-				$('.tx-bwrk-ajaxcontent-content').html(content);
 			});
 
 		return false;
