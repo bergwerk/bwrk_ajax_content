@@ -50,6 +50,7 @@ $(document).ready(function () {
 			.done(function (content) {
 
 				if (picturefill !== undefined) {
+					console.log('picturefill');
 					picturefill();
 				}
 
