@@ -26,7 +26,6 @@
  ***************************************************************/
 
 $(document).ready(function () {
-
 	$('.tx-bwrk-ajaxcontent-link').click(function () {
 
 		var link = $(this);
@@ -37,26 +36,34 @@ $(document).ready(function () {
 
 		loader.show();
 
-		container.find('li').removeClass('active');
-		link.parent('li').addClass('active');
+		if (link.parent('li').hasClass('active')) {
+			link.parent('li').removeClass('active');
+			$('.tx-bwrk-ajaxcontent-content').fadeOut();
 
-		$.ajax({
-				method: "POST",
-				url: "index.php?eID=bwrkAjaxcontentLoad",
-				data: {
-					'tx_bwrkajaxcontent_pi3[uid]': uid
-				}
-			})
-			.done(function (content) {
+		} else {
+			container.find('li').removeClass('active');
+			link.parent('li').addClass('active');
 
-				$('.tx-bwrk-ajaxcontent-content').html(content);
+			$.ajax({
+					method: "POST",
+					url: "index.php?eID=bwrkAjaxcontentLoad",
+					data: {
+						'tx_bwrkajaxcontent_pi3[uid]': uid
+					}
+				})
+				.done(function (content) {
 
-				if (picturefill !== undefined) {
-					picturefill();
-				}
+					$('.tx-bwrk-ajaxcontent-content').html(content);
 
-				loader.hide();
-			});
+					if (picturefill !== undefined) {
+						picturefill();
+					}
+					$('.tx-bwrk-ajaxcontent-content').fadeIn();
+					loader.hide();
+				});
+		}
+
+
 
 		return false;
 	});
